@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Main from "./pages/Main";
+import Subject from "./pages/Subject";
+import Book from "./pages/Book";
+import styles from './App.module.css';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className={styles['site-content']}>
+        <Navbar />
+        <main className={styles.padded}>
+          <Switch>
+            <Route path='/' exact>
+              <Main />
+            </Route>
+            <Route path='/subjects/:subject'>
+              <Subject />
+            </Route>
+            <Route path='/books/:OLID'>
+              <Book />
+            </Route>
+          </Switch>
+        </main>
+      </div>
+      <Footer/>
+    </Fragment>
   );
 }
 

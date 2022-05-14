@@ -1,0 +1,23 @@
+.footer{
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcfbf7;
+    overflow: hidden;
+}
+
+.open-library-logo{
+    position: relative;
+    margin-left: 0.5rem;
+    width: 9rem;
+    height: 9rem;
+    transition: transform 0.2s ease-out;
+}
+
+.open-library-logo:hover{
+    transform:
+    rotate(10deg)
+    scale(1.05);
+}
+

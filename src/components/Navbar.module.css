@@ -1,0 +1,13 @@
+.navbar{
+    display: flex;
+    background-color: #242424;
+}
+
+.navbar a{
+    color: hsla(0,0%,100%,.55);
+    text-decoration: none;
+}
+
+.nav-logo{
+    padding: 1rem 2rem;
+}
