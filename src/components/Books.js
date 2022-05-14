@@ -2,6 +2,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import BookCard from './BookCard';
+import styles from './Books.module.css';
 
 const Books = props => {
     const [books, setBooks] = useState([]);
@@ -30,7 +31,7 @@ const Books = props => {
     }
 
     return (
-        <div>
+        <div className={styles.books}>
             {books.map(book => (
                 <Link key={book.key} to={`/books/${book.cover_edition_key}`}>
                     <BookCard book={book} />

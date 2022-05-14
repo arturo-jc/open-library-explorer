@@ -4,10 +4,24 @@
 }
 
 .navbar a{
-    color: hsla(0,0%,100%,.55);
+    color: #ddbe1796;
     text-decoration: none;
 }
 
-.nav-logo{
+.navbar a:hover{
+    color: #ddbe17;
+}
+
+.nav-link{
+    font-size: 1.6rem;
     padding: 1rem 2rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.nav-logo{
+    fill: currentColor;
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.2rem;
 }

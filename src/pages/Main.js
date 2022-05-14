@@ -11,8 +11,7 @@ const Main = () => {
 
     return (
         <Fragment>
-            <h1>Welcome</h1>
-            <h2>Explore popular subjects</h2>
+            <h1>Explore popular subjects</h1>
             <ul>
                 {subjects.map((subject, index) => (
                     <li key={index}>
@@ -20,7 +19,6 @@ const Main = () => {
                     </li>
                 ))}
             </ul>
-            <h2>Search books by subject</h2>
         </Fragment>
     )
 }

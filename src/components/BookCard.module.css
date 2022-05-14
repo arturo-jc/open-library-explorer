@@ -1,0 +1,13 @@
+.book-card{
+    box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 20%);
+    transition: transform 0.2s;
+}
+
+.book-card:hover{
+    transform: translateY(-0.5rem) scale(1.02);
+    box-shadow: 0 3rem 3rem rgb(0 0 0 / 20%);
+}
+
+.book-card__info{
+    padding: 0 1rem 1rem 1rem;
+}
