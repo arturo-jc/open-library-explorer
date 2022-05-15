@@ -1,0 +1,15 @@
+.notfound__wrapper{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notfound{
+    width: 35rem;
+    max-width: 100%;
+}
+
+.notfound__msg{
+    font-size: 2rem;
+}
