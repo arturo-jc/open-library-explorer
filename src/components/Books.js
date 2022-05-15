@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import BookCard from './BookCard';
 import styles from './Books.module.css';
@@ -11,11 +10,12 @@ const Books = props => {
     const fetchBooks = useCallback(async () => {
         try {
             const response = await axios.get(`https://openlibrary.org/subjects/${props.subject}.json`);
+            console.log(response.data.works);
             setBooks(response.data.works);
-            setLoading(false);
         } catch (e) {
             console.log('Something went wrong');
-            console.log(e);
+        } finally {
+            setLoading(false);
         }
     }, [props]);
 
@@ -27,15 +27,13 @@ const Books = props => {
         return <p>Loading...</p>
     }
     if (!loading && !books.length) {
-        return <p>There are no books on that subject.</p>
+        return <p>Could not find any books on that subject. Sorry!</p>
     }
 
     return (
         <div className={styles.books}>
             {books.map(book => (
-                <Link key={book.key} to={`/books/${book.cover_edition_key}`}>
-                    <BookCard book={book} />
-                </Link>
+                <BookCard key={book.key} book={book} />
             ))}
         </div>
     )

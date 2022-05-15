@@ -1,6 +1,7 @@
 .book-card{
     box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 20%);
     transition: transform 0.2s;
+    overflow: hidden;
 }
 
 .book-card:hover{
@@ -9,5 +10,14 @@
 }
 
 .book-card__info{
+    height: 6rem;
     padding: 0 1rem 1rem 1rem;
+}
+
+.book-card__title{
+    margin-bottom: 0.2rem;
+}
+
+.book-card__authors{
+    margin: 0;
 }

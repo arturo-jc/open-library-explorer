@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import Books from "../components/Books";
+import style from './Subject.module.css';
 
 const Subject = () => {
 
@@ -8,7 +9,7 @@ const Subject = () => {
 
     return (
         <Fragment>
-            <h1>{subject.replaceAll('_', ' ')}</h1>
+            <h1 className={style.heading}>{subject.replaceAll('_', ' ')}</h1>
             <Books subject={subject} />
         </Fragment>
     )

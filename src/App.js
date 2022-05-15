@@ -21,7 +21,7 @@ const App = () => {
             <Route path='/subjects/:subject'>
               <Subject />
             </Route>
-            <Route path='/books/:OLID'>
+            <Route path='/books'>
               <Book />
             </Route>
           </Switch>

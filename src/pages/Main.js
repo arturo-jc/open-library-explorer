@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import style from './Main.module.css';
 
 const Main = () => {
     const subjects = [
@@ -11,10 +12,10 @@ const Main = () => {
 
     return (
         <Fragment>
-            <h1>Explore popular subjects</h1>
+            <h1>Explore Popular Subjects</h1>
             <ul>
                 {subjects.map((subject, index) => (
-                    <li key={index}>
+                    <li className={style['subject-item']} key={index}>
                         <Link to={"/subjects/" + subject}>{subject}</Link>
                     </li>
                 ))}

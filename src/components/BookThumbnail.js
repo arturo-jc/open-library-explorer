@@ -18,7 +18,7 @@ const BookThumbnail = props => {
         <div className={style.wrapper}>
             <div style={backgroundStyle}>
             </div>
-            <img className={style.thumbnail} src={props.cover} />
+            <img className={style.thumbnail} src={props.cover} alt={`${props.title} cover`} />
         </div>
     )
 

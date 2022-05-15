@@ -1,0 +1,20 @@
+.book{
+    display: flex;
+}
+
+.book__info{
+    padding-left: 1.5rem;
+}
+
+.book__title{
+    margin-bottom: 0;
+}
+
+.book__authors{
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.book__description{
+    margin-top: 0;
+}
