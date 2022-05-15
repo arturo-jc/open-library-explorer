@@ -1,3 +1,10 @@
-heading{
+.heading{
     text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+
+.count{
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
 }

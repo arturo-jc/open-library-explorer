@@ -1,20 +1,38 @@
-.book{
+.book__container {
     display: flex;
 }
 
-.book__info{
+.book__info {
     padding-left: 1.5rem;
 }
 
-.book__title{
+.book__title {
     margin-bottom: 0;
 }
 
-.book__authors{
+.book__authors {
     margin-top: 0;
     font-size: 1.5rem;
 }
 
-.book__description{
+.book__description {
     margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    .book__container {
+        flex-direction: column;
+    }
+
+    .book__description {
+        margin-top: 2rem;
+    }
+
+    .book__cover-wrapper {
+        text-align: center;
+    }
+
+    .book__cover {
+        max-width: 100%;
+    }
 }

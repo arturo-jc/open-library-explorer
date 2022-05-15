@@ -36,10 +36,10 @@ const Book = () => {
             ){
                 book.description = description.value;
             }
-            console.log(book.description);
+
             setBook(book);
         } catch (e) {
-            console.log('Something went wrong')
+            console.log(e)
         } finally {
             setLoading(false);
         }
@@ -63,9 +63,9 @@ const Book = () => {
         <Fragment>
             <h1 className={style['book__title']}>{book.title}</h1>
             <p className={style['book__authors']}>{authors}</p>
-            <div className={style.book}>
-                <div>
-                    {<img src={book.cover.large} alt={`${book.title} cover`} />}
+            <div className={style['book__container']}>
+                <div className={style['book__cover-wrapper']}>
+                    {<img className={style['book__cover']} src={book.cover.large} alt={`${book.title} cover`} />}
                 </div>
                 <div className={style['book__info']}>
                     {book.description && <p className={style['book__description']}>{book.description}</p>}
