@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
+import Spinner from "../components/Spinner";
 import style from './Book.module.css';
 
 function useQuery() {
@@ -22,22 +23,21 @@ const Book = () => {
         try {
             const booksEndpoint = `https://openlibrary.org/api/books?bibkeys=OLID:${olid}&format=json&jscmd=data`
             const booksResponse = await axios.get(booksEndpoint);
-            const book = booksResponse.data[`OLID:${olid}`];
+            const newBook = booksResponse.data[`OLID:${olid}`];
 
             const worksEndpoint = `https://openlibrary.org/works/${workid}.json`
             const worksResponse = await axios.get(worksEndpoint);
             const description = worksResponse.data.description;
 
-            if (typeof description === 'string'){
-                book.description = description;
+            if (typeof description === 'string') {
+                newBook.description = description;
             } else if (
                 typeof description === 'object' &&
                 !Array.isArray(description)
-            ){
-                book.description = description.value;
+            ) {
+                newBook.description = description.value;
             }
-
-            setBook(book);
+            setBook(newBook);
         } catch (e) {
             console.log(e)
         } finally {
@@ -50,7 +50,7 @@ const Book = () => {
     }, [fetchBookDetails]);
 
     if (loading) {
-        return <p>Loading...</p>
+        return <Spinner />
     }
 
     if (!loading && !Object.keys(book).length) {
@@ -58,14 +58,37 @@ const Book = () => {
     }
 
     const authors = book.authors.map(author => author.name).join(',');
+    const title = book.url ? (
+        <Link
+            className={style['book__title-link']}
+            to={{ pathname: `${book.url}` }}
+            target="_blank"
+        >
+            <h1 className={style['book__title']}>{book.title}</h1>
+        </Link>
+    ) : (
+        <h1 className={style['book__title']}>{book.title}</h1>
+    )
+
+    const cover = book.url ? (
+        <Link
+            className={style['book__title-link']}
+            to={{ pathname: `${book.url}` }}
+            target="_blank"
+        >
+            <img className={style['book__cover']} src={book.cover.large} alt={`${book.title} cover`} />
+        </Link>
+    ) : (
+        <img className={style['book__cover']} src={book.cover.large} alt={`${book.title} cover`} />
+    )
 
     return (
         <Fragment>
-            <h1 className={style['book__title']}>{book.title}</h1>
+            {title}
             <p className={style['book__authors']}>{authors}</p>
             <div className={style['book__container']}>
                 <div className={style['book__cover-wrapper']}>
-                    {<img className={style['book__cover']} src={book.cover.large} alt={`${book.title} cover`} />}
+                    {cover}
                 </div>
                 <div className={style['book__info']}>
                     {book.description && <p className={style['book__description']}>{book.description}</p>}

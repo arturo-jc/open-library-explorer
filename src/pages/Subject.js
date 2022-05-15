@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Books from "../components/Books";
+import Spinner from "../components/Spinner";
 import style from './Subject.module.css';
 
 const Subject = () => {
@@ -30,7 +31,7 @@ const Subject = () => {
     }, [fetchBooks]);
 
     if (loading) {
-        return <p>Loading...</p>
+        return <Spinner/>
     }
     if (!loading && !books.length) {
         return <p>Could not find any books on that subject. Sorry!</p>
@@ -39,7 +40,7 @@ const Subject = () => {
     return (
         <Fragment>
             <h1 className={style.heading}>{subject.replaceAll('_', ' ')}</h1>
-            {bookCount && <p className={style.count}>Number of books on this subject: {bookCount}</p>}
+            {bookCount && <p className={style.count}>Books on this subject: {bookCount.toLocaleString()}</p>}
             <Books books={books} subject={subject} />
         </Fragment>
     )

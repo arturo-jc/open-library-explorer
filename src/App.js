@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Main from "./pages/Main";
@@ -14,20 +15,22 @@ const App = () => {
       <div className={styles['site-content']}>
         <Navbar />
         <main className={styles.padded}>
-          <Switch>
-            <Route path='/' exact>
-              <Main />
-            </Route>
-            <Route path='/subjects/:subject'>
-              <Subject />
-            </Route>
-            <Route path='/books'>
-              <Book />
-            </Route>
-          </Switch>
+          <ErrorBoundary>
+            <Switch>
+              <Route path='/' exact>
+                <Main />
+              </Route>
+              <Route path='/subjects/:subject'>
+                <Subject />
+              </Route>
+              <Route path='/books'>
+                <Book />
+              </Route>
+            </Switch>
+          </ErrorBoundary>
         </main>
       </div>
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 }
