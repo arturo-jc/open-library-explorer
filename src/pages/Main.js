@@ -4,9 +4,15 @@ import style from './Main.module.css';
 
 const Main = () => {
     const subjects = [
-        'romance',
-        'history',
         'science',
+        'technology',
+        'history',
+        'politics',
+        'art',
+        'music',
+        'cooking',
+        'travel',
+        'romance',
         'adventure'
     ]
 

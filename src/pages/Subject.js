@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Books from "../components/Books";
 import Spinner from "../components/Spinner";
+import NotFound from "../components/NotFound";
 import style from './Subject.module.css';
 
 const Subject = () => {
@@ -31,10 +32,13 @@ const Subject = () => {
     }, [fetchBooks]);
 
     if (loading) {
-        return <Spinner/>
+        return <Spinner />
     }
+    
     if (!loading && !books.length) {
-        return <p>Could not find any books on that subject. Sorry!</p>
+        return <NotFound
+            message="Could not find any books on that subject. Sorry!"
+        />
     }
 
     return (

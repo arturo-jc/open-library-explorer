@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Main from "./pages/Main";
 import Subject from "./pages/Subject";
 import Book from "./pages/Book";
+import Error from "./pages/Error";
 import styles from './App.module.css';
 
 const App = () => {
@@ -25,6 +26,9 @@ const App = () => {
               </Route>
               <Route path='/books'>
                 <Book />
+              </Route>
+              <Route path='/error'>
+                <Error />
               </Route>
             </Switch>
           </ErrorBoundary>

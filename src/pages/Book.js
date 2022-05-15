@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import Spinner from "../components/Spinner";
 import style from './Book.module.css';
+import NotFound from "../components/NotFound";
 
 function useQuery() {
     const { search } = useLocation();
@@ -54,7 +55,9 @@ const Book = () => {
     }
 
     if (!loading && !Object.keys(book).length) {
-        return <p>Could not find the requested book. Sorry!</p>
+        return <NotFound
+            message="Could not find the book you requested. Sorry!"
+        />
     }
 
     const authors = book.authors.map(author => author.name).join(',');
