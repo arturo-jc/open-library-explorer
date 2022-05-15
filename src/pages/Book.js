@@ -54,11 +54,9 @@ const Book = () => {
         return <Spinner />
     }
 
-    if (!loading && !Object.keys(book).length) {
-        return <NotFound
-            message="Could not find the book you requested. Sorry!"
-        />
-    }
+    if (!loading && (!book || !Object.keys(book).length)) {
+        return <NotFound message="Could not find the book you requested. Sorry!" />;
+      }
 
     const authors = book.authors.map(author => author.name).join(',');
     const title = book.url ? (

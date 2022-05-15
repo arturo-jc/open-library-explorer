@@ -17,7 +17,6 @@ const Subject = () => {
     const fetchBooks = useCallback(async () => {
         try {
             const response = await axios.get(`https://openlibrary.org/subjects/${subject}.json`);
-            console.log(response.data);
             setBooks(response.data.works);
             setBookCount(response.data.work_count);
         } catch (e) {
