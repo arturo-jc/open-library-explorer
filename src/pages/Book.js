@@ -97,7 +97,7 @@ const Book = () => {
                     <ul>
                         {book.subjects && book.subjects.map((subject, index) => (
                             <li key={index}>
-                                <Link to={'/subjects/' + subject.name.toLowerCase().replaceAll(' ', '_')}>
+                                <Link to={'/subjects/' + subject.name.toLowerCase().replaceAll(' ', '_') + '/1'}>
                                     {subject.name}
                                 </Link>
                             </li>

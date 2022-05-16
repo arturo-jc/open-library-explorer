@@ -1,0 +1,42 @@
+.btn-group{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-bottom: 2.5rem;
+}
+
+.btn-group li{
+    background-color: rgb(237, 233, 233);
+}
+
+.btn-group a:hover{
+    background-color: rgb(214, 212, 212);
+}
+
+.btn-group a{
+    display: block;
+    padding: 0.6rem;
+    border: 1px solid rgb(168, 166, 166);
+    border-left: none;
+}
+
+.btn-group .disabled{
+    color: rgb(168, 166, 166);
+    display: block;
+    padding: 0.6rem;
+    border: 1px solid rgb(168, 166, 166);
+    border-left: none;
+}
+
+.btn-group li:first-child a{
+    border-left: 1px solid rgb(168, 166, 166);
+    border-radius: 6px 0 0 6px;
+}
+
+.btn-group li:last-child a{
+    border-radius: 0 6px 6px 0;
+}
+
+.btn-group a:hover{
+    text-decoration: none;
+}

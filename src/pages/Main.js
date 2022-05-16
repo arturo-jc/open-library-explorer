@@ -22,7 +22,7 @@ const Main = () => {
             <ul>
                 {subjects.map((subject, index) => (
                     <li className={style['subject-item']} key={index}>
-                        <Link to={"/subjects/" + subject}>{subject}</Link>
+                        <Link to={`/subjects/${subject}/1`}>{subject}</Link>
                     </li>
                 ))}
             </ul>

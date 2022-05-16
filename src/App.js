@@ -18,10 +18,7 @@ const App = () => {
         <main className={styles.padded}>
           <ErrorBoundary>
             <Switch>
-              <Route path='/' exact>
-                <Main />
-              </Route>
-              <Route path='/subjects/:subject'>
+              <Route path='/subjects/:subject/:page'>
                 <Subject />
               </Route>
               <Route path='/books'>
@@ -29,6 +26,9 @@ const App = () => {
               </Route>
               <Route path='/error'>
                 <Error />
+              </Route>
+              <Route path='/'>
+                <Main />
               </Route>
             </Switch>
           </ErrorBoundary>
