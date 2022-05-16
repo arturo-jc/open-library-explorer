@@ -1,13 +1,16 @@
-.footer{
+.footer {
     margin-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fcfbf7;
     overflow: hidden;
+    background-image: linear-gradient(to right, #d6d5ceaa, #fcfbf7, #d6d5ceaa),
+        url("https://source.unsplash.com/FKqxZ58bVjU");
+    background-size: cover;
+    background-position: center;
 }
 
-.open-library-logo{
+.open-library-logo {
     position: relative;
     margin-left: 0.5rem;
     width: 9rem;
@@ -15,9 +18,7 @@
     transition: transform 0.2s ease-out;
 }
 
-.open-library-logo:hover{
+.open-library-logo:hover {
     transform:
-    rotate(10deg)
-    scale(1.05);
+        rotate(10deg) scale(1.05);
 }
-

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Books from "../components/Books";
 import Pagination from '../components/Pagination';
-import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
 import style from './Subject.module.css';
 
@@ -19,6 +18,7 @@ const Subject = () => {
 
     const fetchBooks = useCallback(async () => {
         try {
+            setLoading(true);
             const offset = (page - 1) * 12;
             const response = await axios.get(
                 `https://openlibrary.org/subjects/${subject}.json?limit=${booksPerPage}&offset=${offset}`
@@ -36,20 +36,16 @@ const Subject = () => {
         fetchBooks();
     }, [fetchBooks]);
 
-    if (loading) {
-        return <Spinner />
-    }
-
     if (!loading && !books.length) {
         return <NotFound
             message="Could not find any books on that subject. Sorry!"
         />
     }
-
+    
     return (
         <Fragment>
             <h1 className={style.heading}>{subject.replaceAll('_', ' ')}</h1>
-            {bookCount && <p className={style.count}>Books on this subject: {bookCount.toLocaleString()}</p>}
+            <p className={style.count}>Books on this subject: {bookCount && bookCount.toLocaleString()}</p>
             <Pagination
                 subject={subject}
                 bookCount={bookCount}
@@ -57,6 +53,7 @@ const Subject = () => {
                 currentPage={page}
             />
             <Books
+                loading={loading}
                 books={books}
                 subject={subject}
             />

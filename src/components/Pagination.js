@@ -8,8 +8,18 @@ const Pagination = props => {
     const pageGroup = Math.ceil(currentPage / numOfPageBtns);
 
     const getFirstPage = (pageGroup) => {
-        if (pageGroup === 1) return 1;
-        return getFirstPage(pageGroup - 1) + numOfPageBtns;
+
+        const memo = {}
+
+        const helper = pageGroup => {
+            if(memo.pageGroup) return memo.pageGroup;
+            if (pageGroup === 1) return 1;
+            const result = getFirstPage(pageGroup - 1) + numOfPageBtns;
+            memo.pageGroup = result
+            return result;
+        }
+
+        return helper(pageGroup);
     }
 
     const firstPage = getFirstPage(pageGroup);

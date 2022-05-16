@@ -1,7 +1,12 @@
 import BookCard from './BookCard';
+import Spinner from './Spinner';
 import styles from './Books.module.css';
 
 const Books = props => {
+    
+    if (props.loading) {
+        return <Spinner />
+    }
 
     return (
         <div className={styles.books}>

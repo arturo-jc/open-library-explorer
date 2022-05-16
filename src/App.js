@@ -7,6 +7,7 @@ import Main from "./pages/Main";
 import Subject from "./pages/Subject";
 import Book from "./pages/Book";
 import Error from "./pages/Error";
+import NotFound from "./components/NotFound";
 import styles from './App.module.css';
 
 const App = () => {
@@ -18,6 +19,9 @@ const App = () => {
         <main className={styles.padded}>
           <ErrorBoundary>
             <Switch>
+              <Route path='/' exact>
+                <Main />
+              </Route>
               <Route path='/subjects/:subject/:page'>
                 <Subject />
               </Route>
@@ -28,7 +32,9 @@ const App = () => {
                 <Error />
               </Route>
               <Route path='/'>
-                <Main />
+                <NotFound
+                  message="Could not find the requested resource. Sorry!"
+                />
               </Route>
             </Switch>
           </ErrorBoundary>
