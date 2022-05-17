@@ -11,7 +11,7 @@ const BookThumbnail = props => {
         justifyContent: 'center',
         height: '18rem',
         width: '100%',
-        backgroundImage: `linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5)), url(${props.cover})`,
+        backgroundImage: `linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(200, 200, 200, 0.5)), url(${cover})`,
         backgroundSize: 'cover',
         filter: 'blur(5px)',
         overflow: 'hidden'
