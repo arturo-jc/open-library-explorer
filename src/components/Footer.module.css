@@ -5,20 +5,30 @@
     align-items: center;
     overflow: hidden;
     background-image: linear-gradient(to right, #d6d5ceaa, #fcfbf7, #d6d5ceaa),
-        url("https://source.unsplash.com/FKqxZ58bVjU");
+      url("https://source.unsplash.com/FKqxZ58bVjU");
     background-size: cover;
     background-position: center;
-}
-
-.open-library-logo {
+  }
+  
+  .open-library-logo {
     position: relative;
     margin-left: 0.5rem;
     width: 9rem;
     height: 9rem;
     transition: transform 0.2s ease-out;
-}
-
-.open-library-logo:hover {
-    transform:
-        rotate(10deg) scale(1.05);
-}
+  }
+  
+  .open-library-logo:hover {
+    transform: rotate(10deg) scale(1.05);
+  }
+  
+  @media (max-width: 600px) {
+    .footer {
+      font-size: 0.8rem;
+    }
+    .open-library-logo {
+      height: 6rem;
+      width: 6rem;
+    }
+  }
+  
