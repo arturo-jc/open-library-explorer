@@ -3,14 +3,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Books from "../components/Books";
 import Pagination from '../components/Pagination';
+import FilterInput from "../components/FilterInput";
 import NotFound from "../components/NotFound";
 import style from './Subject.module.css';
 
 const Subject = () => {
 
     const [books, setBooks] = useState([]);
-    const [bookCount, setBookCount] = useState('')
+    const [bookCount, setBookCount] = useState('');
     const [loading, setLoading] = useState(true);
+    const [filterCondition, setFilterCondition] = useState('');
 
     const { subject, page } = useParams();
 
@@ -18,6 +20,7 @@ const Subject = () => {
 
     const fetchBooks = useCallback(async () => {
         try {
+            setFilterCondition('');
             setLoading(true);
             const offset = (page - 1) * 12;
             const response = await axios.get(
@@ -41,7 +44,12 @@ const Subject = () => {
             message="Could not find any books on that subject. Sorry!"
         />
     }
-    
+
+    const filteredBooks = books.filter(book => {
+        const authors = book.authors.map(author => author.name).join(' ');
+        return (book.title + authors).toLowerCase().includes(filterCondition.toLowerCase());
+    })
+
     return (
         <Fragment>
             <h1 className={style.heading}>{subject.replaceAll('_', ' ')}</h1>
@@ -52,10 +60,10 @@ const Subject = () => {
                 booksPerPage={booksPerPage}
                 currentPage={page}
             />
+            <FilterInput filterCondition={filterCondition} setFilterCondition={setFilterCondition} />
             <Books
                 loading={loading}
-                books={books}
-                subject={subject}
+                books={filteredBooks}
             />
         </Fragment>
     )

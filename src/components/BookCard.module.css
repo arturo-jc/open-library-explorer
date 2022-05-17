@@ -21,10 +21,3 @@
 .book-card__authors{
     margin: 0;
 }
-
-@media (max-width: 460px) {
-    .book-card{
-        width: 14rem;
-    }
-  }
-  

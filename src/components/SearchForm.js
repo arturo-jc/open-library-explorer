@@ -17,6 +17,7 @@ const SearchForm = () => {
         if(subject){
             history.push(`/subjects/${subject.toLowerCase().replaceAll(' ', '_')}/1`)
         }
+        setSubject('');
     }
 
     return (

@@ -1,0 +1,22 @@
+.form {
+    margin-bottom: 2.5rem;
+    width: fit-content;
+}
+
+.label {
+    display: none;
+}
+
+.input {
+    width: 11rem;
+    border: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    padding: 0.3rem 0.2rem;
+}
+
+.input:placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+}
