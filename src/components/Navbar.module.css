@@ -1,6 +1,8 @@
 .navbar{
     display: flex;
     background-color: #2b2c31;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar a{
@@ -24,4 +26,16 @@
     height: 2rem;
     width: 2rem;
     margin-right: 0.2rem;
+}
+
+@media (max-width: 600px){
+    .nav-link{
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    
+    .nav-logo{
+        height: 1.42rem;
+        width: 1.42rem;
+    }
 }

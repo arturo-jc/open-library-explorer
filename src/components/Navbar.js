@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from './Navbar.module.css';
 import { ReactComponent as NavLogo } from '../books.svg';
+import SearchForm from "./SearchForm";
 
 const Navbar = () => {
     return (
@@ -9,6 +10,7 @@ const Navbar = () => {
                 <NavLogo className={styles['nav-logo']} />
                 Open Library Explorer
             </NavLink>
+            <SearchForm />
         </div>
     );
 }
