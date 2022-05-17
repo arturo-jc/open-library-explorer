@@ -4,25 +4,25 @@ import axios from "axios";
 import Books from "../components/Books";
 import Pagination from '../components/Pagination';
 import FilterInput from "../components/FilterInput";
+import BooksPerPageInput from "../components/BooksPerPageInput";
 import NotFound from "../components/NotFound";
 import style from './Subject.module.css';
 
 const Subject = () => {
 
+    const [loading, setLoading] = useState(true);
     const [books, setBooks] = useState([]);
     const [bookCount, setBookCount] = useState('');
-    const [loading, setLoading] = useState(true);
     const [filterCondition, setFilterCondition] = useState('');
+    const [booksPerPage, setBooksPerPage] = useState(12);
 
     const { subject, page } = useParams();
-
-    const booksPerPage = 12;
 
     const fetchBooks = useCallback(async () => {
         try {
             setFilterCondition('');
             setLoading(true);
-            const offset = (page - 1) * 12;
+            const offset = (page - 1) * booksPerPage;
             const response = await axios.get(
                 `https://openlibrary.org/subjects/${subject}.json?limit=${booksPerPage}&offset=${offset}`
             );
@@ -33,7 +33,7 @@ const Subject = () => {
         } finally {
             setLoading(false);
         }
-    }, [subject, page]);
+    }, [subject, page, booksPerPage]);
 
     useEffect(() => {
         fetchBooks();
@@ -54,6 +54,7 @@ const Subject = () => {
         <Fragment>
             <h1 className={style.heading}>{subject.replaceAll('_', ' ')}</h1>
             <p className={style.count}>Books on this subject: {bookCount && bookCount.toLocaleString()}</p>
+            <BooksPerPageInput booksPerPage={booksPerPage} setBooksPerPage={setBooksPerPage} />
             <Pagination
                 subject={subject}
                 bookCount={bookCount}

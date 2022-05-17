@@ -6,10 +6,10 @@ const Main = () => {
     const subjects = [
         'science',
         'technology',
-        'history',
         'politics',
         'art',
         'music',
+        "family",
         'cooking',
         'travel',
         'romance',
