@@ -39,3 +39,9 @@
 .btn-group a:hover{
     text-decoration: none;
 }
+
+.btn-group .icon{
+    fill: currentColor;
+    width: 0.8rem;
+    height: 0.8rem;
+}

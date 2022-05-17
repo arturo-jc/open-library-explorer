@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import style from './Pagination.module.css'
+import { ReactComponent as Forward } from '../forward.svg';
+import { ReactComponent as Back } from '../back.svg';
 
 const Pagination = props => {
     const numOfPageBtns = 3;
@@ -12,7 +14,7 @@ const Pagination = props => {
         const memo = {}
 
         const helper = pageGroup => {
-            if(memo.pageGroup) return memo.pageGroup;
+            if (memo.pageGroup) return memo.pageGroup;
             if (pageGroup === 1) return 1;
             const result = getFirstPage(pageGroup - 1) + numOfPageBtns;
             memo.pageGroup = result
@@ -37,17 +39,26 @@ const Pagination = props => {
         backgroundColor: 'rgb(214, 212, 212)',
     }
 
-    const prevBtn = currentPage === 1 ? (<li className={style.disabled}>{'<<'}</li>) : (
-        <li>
-            <NavLink activeStyle={activeStyle} to={`/subjects/${props.subject}/${currentPage - 1}`}>{'<<'}</NavLink>
-        </li>
-    )
+    const prevBtn = currentPage === 1 ?
+        (<li className={style.disabled}>
+            <Back className={style.icon}/>
+        </li>)
+        :
+        (<li>
+            <NavLink activeStyle={activeStyle} to={`/subjects/${props.subject}/${currentPage - 1}`}>
+                <Back className={style.icon}/>
+            </NavLink>
+        </li>)
 
-    const nextBtn = currentPage === pagesTotal ? (<li className={style.disabled}>{'>>'}</li>) : (
-        <li>
-            <NavLink activeStyle={activeStyle} to={`/subjects/${props.subject}/${currentPage + 1}`}>{'>>'}</NavLink>
-        </li>
-    )
+    const nextBtn = currentPage === pagesTotal ?
+        (<li className={style.disabled}>
+            <Forward className={style.icon}/>
+        </li>) :
+        (<li>
+            <NavLink activeStyle={activeStyle} to={`/subjects/${props.subject}/${currentPage + 1}`}>
+                <Forward className={style.icon}/>
+            </NavLink>
+        </li>)
 
     return (
         <ul className={style['btn-group']}>
