@@ -1,6 +1,9 @@
-import style from './BookThumbnail.module.css'
+import style from './BookThumbnail.module.css';
+import noCover from '../nocover.gif';
 
 const BookThumbnail = props => {
+
+    const cover = `https://covers.openlibrary.org/b/id/${props.coverId}-M.jpg`;
 
     let backgroundStyle = {
         position: 'relative',
@@ -18,7 +21,11 @@ const BookThumbnail = props => {
         <div className={style.wrapper}>
             <div style={backgroundStyle}>
             </div>
-            <img className={style.thumbnail} src={props.cover} alt={`${props.title} cover`} />
+            <img
+                className={style.thumbnail}
+                src={props.coverId ? (cover) : (noCover)}
+                alt={`${props.title} cover`}
+            />
         </div>
     )
 

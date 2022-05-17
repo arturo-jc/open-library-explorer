@@ -20,12 +20,10 @@ const BookCard = props => {
         authors = `${authors.substring(0, maxAuthorLength - 1)}...`
     }
 
-    const cover = `https://covers.openlibrary.org/b/id/${props.book.cover_id}-M.jpg`;
-
     return (
         <Link to={`/books?olid=${olid}&workid=${workdid}`}>
             <div className={styles['book-card']}>
-                <BookThumbnail title={title} cover={cover} />
+                <BookThumbnail title={title} coverId={props.book.cover_id} />
                 <div className={styles['book-card__info']}>
                     <h3 className={styles['book-card__title']}>{title}</h3>
                     <p className={styles['book-card__authors']}>{props.book.authors && authors}</p>

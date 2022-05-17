@@ -1,10 +1,13 @@
-.label{
+.label {
     font-size: 1.2rem;
     margin-right: 0.5rem;
-}
-
-.input{
+  }
+  
+  .input {
+    border-radius: 5px;
+    border: 1px solid rgb(168, 166, 166);
     width: 2.5rem;
     font-size: 1rem;
     padding: 0.2rem;
-}
+  }
+  
