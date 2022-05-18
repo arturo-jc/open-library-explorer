@@ -4,34 +4,18 @@ import { ReactComponent as Forward } from '../forward.svg';
 import { ReactComponent as Back } from '../back.svg';
 
 const Pagination = props => {
-    const numOfPageBtns = 3;
+    const numOfPageBtns = 4;
     const currentPage = parseInt(props.currentPage);
     const pagesTotal = Math.ceil(props.bookCount / props.booksPerPage)
     const pageGroup = Math.ceil(currentPage / numOfPageBtns);
-
-    const getFirstPage = (pageGroup) => {
-
-        const memo = {}
-
-        const helper = pageGroup => {
-            if (memo.pageGroup) return memo.pageGroup;
-            if (pageGroup === 1) return 1;
-            const result = getFirstPage(pageGroup - 1) + numOfPageBtns;
-            memo.pageGroup = result
-            return result;
-        }
-
-        return helper(pageGroup);
-    }
-
-    const firstPage = getFirstPage(pageGroup);
-    const adjacentPages = [firstPage];
-
-    let additions = 0;
-    let current = firstPage;
-    while (additions < (numOfPageBtns - 1) && current < pagesTotal) {
+    const firstPageOfGroup = (pageGroup * (numOfPageBtns - 1)) + (pageGroup - (numOfPageBtns - 1));
+    
+    const adjacentPages = [firstPageOfGroup];
+    let pageBtns = adjacentPages.length;
+    let current = firstPageOfGroup;
+    while (pageBtns < numOfPageBtns && current < pagesTotal) {
         adjacentPages.push(current + 1);
-        additions++;
+        pageBtns++;
         current++;
     }
 
